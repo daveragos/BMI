@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tester/IconWidget';
+import 'package:tester/customWidget';
 
 class InputPage extends StatefulWidget {
   const InputPage({super.key});
@@ -32,11 +35,13 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReuseableCard(
                     colour: activeColor,
+                    childIcon: SexWidget(FontAwesomeIcons.mars, "MALE"),
                   ),
                 ),
                 Expanded(
                   child: ReuseableCard(
                     colour: activeColor,
+                    childIcon: SexWidget(FontAwesomeIcons.venus, "FEMALE"),
                   ),
                 ),
               ],
@@ -69,22 +74,6 @@ class _InputPageState extends State<InputPage> {
             width: double.infinity,
           )
         ],
-      ),
-    );
-  }
-}
-
-class ReuseableCard extends StatelessWidget {
-  ReuseableCard({required Color this.colour});
-  final Color colour;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(15),
-      decoration: BoxDecoration(
-        color: colour,
-        borderRadius: BorderRadius.circular(10),
       ),
     );
   }
