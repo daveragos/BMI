@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import 'inputPage.dart';
+import 'InputPage.dart';
 
 void main() => runApp(const MyApp());
 
