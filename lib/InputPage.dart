@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tester/IconWidget';
-import 'package:tester/CardWidget';
+import 'package:tester/IconWidget.dart';
+import 'package:tester/CardWidget.dart';
 
 const activeColor = Color(0XFF1D1E33);
 const inactiveColor = Color(0XFF111328);
