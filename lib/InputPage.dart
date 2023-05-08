@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tester/IconWidget.dart';
 import 'package:tester/CardWidget.dart';
 
-const activeColor = Color(0XFF1D1E33);
+const activeColor = Color(0XFF1D1E63);
 const inactiveColor = Color(0XFF111328);
 const containerColor = Color(0XFFEB1555);
 const hItvalue = 80.0;
@@ -19,32 +19,13 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  Color malecardcolor = inactiveColor;
-  Color femalecardcolor = inactiveColor;
-  void updateColor(Gender gender) {
-    if (gender == Gender.male) {
-      if (malecardcolor == inactiveColor) {
-        malecardcolor = activeColor;
-        femalecardcolor = inactiveColor;
-      } else {
-        malecardcolor = inactiveColor;
-      }
-    }
-    if (gender == Gender.female) {
-      if (femalecardcolor == inactiveColor) {
-        femalecardcolor = activeColor;
-        malecardcolor = inactiveColor;
-      } else {
-        femalecardcolor = inactiveColor;
-      }
-    }
-  }
+  Gender? gender;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF0A0E1),
+        backgroundColor: Color(0xFF0A0E01),
         title: Center(
           child: Text(
             "BMI CALCULATOR",
@@ -57,29 +38,26 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: ReuseableCard(
+                    clicked: () {
                       setState(() {
-                        updateColor(Gender.male);
+                        gender = Gender.male;
                       });
                     },
-                    child: ReuseableCard(
-                      colour: malecardcolor,
-                      childIcon: SexWidget(FontAwesomeIcons.mars, "MALE"),
-                    ),
+                    colour: gender == Gender.male ? activeColor : inactiveColor,
+                    childWij: SexWidget(FontAwesomeIcons.mars, "MALE"),
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: ReuseableCard(
+                    clicked: () {
                       setState(() {
-                        updateColor(Gender.female);
+                        gender = Gender.female;
                       });
                     },
-                    child: ReuseableCard(
-                      colour: femalecardcolor,
-                      childIcon: SexWidget(FontAwesomeIcons.venus, "FEMALE"),
-                    ),
+                    colour:
+                        gender == Gender.female ? activeColor : inactiveColor,
+                    childWij: SexWidget(FontAwesomeIcons.venus, "FEMALE"),
                   ),
                 ),
               ],
@@ -87,8 +65,20 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child: ReuseableCard(
-              colour: activeColor,
-            ),
+                colour: activeColor,
+                childWij: Column(
+                  children: [
+                    Text("HEIGHT"),
+                    Text('189'),
+                    GestureDetector(
+                        child: Slider(
+                      min: 1,
+                      max: 30,
+                      value: 30,
+                      onChanged: (value) {},
+                    ))
+                  ],
+                )),
           ),
           Expanded(
             child: Row(
