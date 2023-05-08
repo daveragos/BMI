@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'consts.dart';
 
 class SexWidget extends StatelessWidget {
   SexWidget(this.sexIcon, this.gender);
@@ -18,7 +19,7 @@ class SexWidget extends StatelessWidget {
         ),
         Text(
           gender,
-          style: TextStyle(fontSize: 18, color: Color(0XFF8D8E98)),
+          style: kTxtStyl,
         )
       ],
     );

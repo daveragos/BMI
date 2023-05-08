@@ -4,6 +4,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tester/IconWidget.dart';
 import 'package:tester/CardWidget.dart';
 
+import 'consts.dart';
+
 const activeColor = Color(0XFF1D1E63);
 const inactiveColor = Color(0XFF111328);
 const containerColor = Color(0XFFEB1555);
@@ -45,7 +47,10 @@ class _InputPageState extends State<InputPage> {
                       });
                     },
                     colour: gender == Gender.male ? activeColor : inactiveColor,
-                    childWij: SexWidget(FontAwesomeIcons.mars, "MALE"),
+                    childWij: SexWidget(
+                      FontAwesomeIcons.mars,
+                      "MALE",
+                    ),
                   ),
                 ),
                 Expanded(
@@ -57,7 +62,10 @@ class _InputPageState extends State<InputPage> {
                     },
                     colour:
                         gender == Gender.female ? activeColor : inactiveColor,
-                    childWij: SexWidget(FontAwesomeIcons.venus, "FEMALE"),
+                    childWij: SexWidget(
+                      FontAwesomeIcons.venus,
+                      "FEMALE",
+                    ),
                   ),
                 ),
               ],
@@ -67,16 +75,30 @@ class _InputPageState extends State<InputPage> {
             child: ReuseableCard(
                 colour: activeColor,
                 childWij: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("HEIGHT"),
-                    Text('189'),
-                    GestureDetector(
-                        child: Slider(
-                      min: 1,
-                      max: 30,
-                      value: 30,
-                      onChanged: (value) {},
-                    ))
+                    Text(
+                      "HEIGHT",
+                      style: kTxtStyl,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: [
+                        Text(
+                          '189',
+                          style: TextStyle(
+                            fontSize: 40,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ),
+                        Text(
+                          "cm",
+                          style: kTxtStyl,
+                        ),
+                      ],
+                    ),
                   ],
                 )),
           ),
